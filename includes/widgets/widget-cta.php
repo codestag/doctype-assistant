@@ -65,7 +65,7 @@ class stag_widget_cta extends WP_Widget {
 		$instance = wp_parse_args( (array) $instance, $defaults );
 
 		/* HERE GOES THE FORM */
-	?>
+		?>
 
 	<p>
 		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'doctype-assistant' ); ?></label>
@@ -82,8 +82,8 @@ class stag_widget_cta extends WP_Widget {
 		<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'text' ); ?>" name="<?php echo $this->get_field_name( 'text' ); ?>" value="<?php echo $instance['text']; ?>" />
 	</p>
 
-	<?php
-    }
+		<?php
+	}
 
 	/**
 	 * Registers the widget with the WordPress Widget API
