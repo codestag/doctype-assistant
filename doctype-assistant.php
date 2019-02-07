@@ -81,12 +81,12 @@ if ( ! class_exists( 'Doctype_Assistant' ) ) :
 		 * @since 1.0
 		 */
 		public function includes() {
-			require_once DA_PLUGIN_PATH . 'widgets/widget-contact.php';
-			require_once DA_PLUGIN_PATH . 'widgets/widget-cta.php';
-			require_once DA_PLUGIN_PATH . 'widgets/widget-hero.php';
-			require_once DA_PLUGIN_PATH . 'widgets/widget-intro.php';
-			require_once DA_PLUGIN_PATH . 'widgets/widget-recent-projects.php';
-			require_once DA_PLUGIN_PATH . 'widgets/widget-static-content.php';
+			require_once DA_PLUGIN_PATH . 'includes/widgets/widget-contact.php';
+			require_once DA_PLUGIN_PATH . 'includes/widgets/widget-cta.php';
+			require_once DA_PLUGIN_PATH . 'includes/widgets/widget-hero.php';
+			require_once DA_PLUGIN_PATH . 'includes/widgets/widget-intro.php';
+			require_once DA_PLUGIN_PATH . 'includes/widgets/widget-recent-projects.php';
+			require_once DA_PLUGIN_PATH . 'includes/widgets/widget-static-content.php';
 
 			require_once DA_PLUGIN_PATH . 'includes/updater/updater.php';
 		}
