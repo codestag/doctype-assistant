@@ -122,14 +122,17 @@ function doctype_assistant_activation_notice() {
  * @since 1.0
  */
 function doctype_assistant_activation_check() {
-	$theme = wp_get_theme(); // gets the current theme
-	if ( 'Doctype' == $theme->name || 'Doctype' == $theme->parent_theme ) {
+	$theme = wp_get_theme(); // gets the current theme.
+	if ( 'Doctype' === $theme->name || 'Doctype' === $theme->parent_theme ) {
 		if ( function_exists( 'is_multisite' ) && is_multisite() ) {
 			add_action( 'after_setup_theme', 'doctype_assistant' );
 		} else {
 			doctype_assistant();
 		}
 	} else {
+		if ( ! function_exists( 'deactivate_plugins' ) ) {
+			require_once ABSPATH . 'wp-admin/includes/plugin.php';
+		}
 		deactivate_plugins( plugin_basename( __FILE__ ) );
 		add_action( 'admin_notices', 'doctype_assistant_activation_notice' );
 	}
