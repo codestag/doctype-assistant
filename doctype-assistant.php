@@ -88,6 +88,11 @@ if ( ! class_exists( 'Doctype_Assistant' ) ) :
 			require_once DA_PLUGIN_PATH . 'includes/widgets/widget-recent-projects.php';
 			require_once DA_PLUGIN_PATH . 'includes/widgets/widget-static-content.php';
 
+			if ( is_admin() ) {
+				require_once DA_PLUGIN_PATH . 'includes/meta/page-meta.php';
+				require_once DA_PLUGIN_PATH . 'includes/meta/portfolio-meta.php';
+			}
+
 		}
 	}
 endif;
