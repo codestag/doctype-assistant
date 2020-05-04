@@ -88,7 +88,6 @@ if ( ! class_exists( 'Doctype_Assistant' ) ) :
 			require_once DA_PLUGIN_PATH . 'includes/widgets/widget-recent-projects.php';
 			require_once DA_PLUGIN_PATH . 'includes/widgets/widget-static-content.php';
 
-			require_once DA_PLUGIN_PATH . 'includes/updater/updater.php';
 		}
 	}
 endif;
