@@ -81,6 +81,10 @@ if ( ! class_exists( 'Doctype_Assistant' ) ) :
 		 * @since 1.0
 		 */
 		public function includes() {
+			// Shortcodes.
+			require_once DA_PLUGIN_PATH . 'includes/shortcodes/contact-form.php';
+
+			// Widgets.
 			require_once DA_PLUGIN_PATH . 'includes/widgets/widget-contact.php';
 			require_once DA_PLUGIN_PATH . 'includes/widgets/widget-cta.php';
 			require_once DA_PLUGIN_PATH . 'includes/widgets/widget-hero.php';
