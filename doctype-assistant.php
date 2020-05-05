@@ -50,7 +50,7 @@ if ( ! class_exists( 'Doctype_Assistant' ) ) :
 		 * @since 1.0
 		 */
 		public function init() {
-			add_action( 'enqueue_assets', 'plugin_assets' );
+			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts' ) );
 		}
 
 		/**
@@ -93,10 +93,25 @@ if ( ! class_exists( 'Doctype_Assistant' ) ) :
 			require_once DA_PLUGIN_PATH . 'includes/widgets/widget-static-content.php';
 
 			if ( is_admin() ) {
+				require_once DA_PLUGIN_PATH . 'includes/meta/stag-admin-metaboxes.php';
 				require_once DA_PLUGIN_PATH . 'includes/meta/page-meta.php';
 				require_once DA_PLUGIN_PATH . 'includes/meta/portfolio-meta.php';
 			}
 
+		}
+
+		public function enqueue_admin_scripts( $hook ) {
+			if ( 'post.php' === $hook || 'post-new.php' === $hook ) {
+				wp_register_style( 'stag-admin-metabox', DA_PLUGIN_URL . 'assets/css/stag-admin-metabox.css', array( 'wp-color-picker' ), DA_VERSION );
+				wp_enqueue_style( 'stag-admin-metabox' );
+			}
+			if ( 'post.php' === $hook || 'post-new.php' === $hook || 'widgets.php' === $hook ) {
+				wp_enqueue_media();
+				wp_register_script( 'stag-admin-metabox', DA_PLUGIN_URL . 'assets/js/stag-admin-metabox.js', array( 'jquery', 'wp-color-picker' ) );
+				wp_enqueue_script( 'stag-admin-metabox' );
+				wp_enqueue_style( 'wp-color-picker' );
+			}
+			return;
 		}
 	}
 endif;
