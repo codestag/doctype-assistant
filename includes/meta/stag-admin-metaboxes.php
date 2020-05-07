@@ -239,9 +239,9 @@ function stag_create_meta_box( $post, $meta_box ) {
 
 			    $meta = get_post_meta( $post->ID, '_stag_image_ids', true );
 			    $thumbs_output = '';
-			    $button_text = ($meta) ? __('Edit Gallery', 'stag') : $field['std'];
+			    $button_text = ($meta) ? __('Edit Gallery', 'doctype-assistant') : $field['std'];
 			    if( $meta ) {
-			        $field['std'] = __('Edit Gallery', 'stag');
+			        $field['std'] = __('Edit Gallery', 'doctype-assistant');
 			        $thumbs = explode(',', $meta);
 			        $thumbs_output = '';
 			        foreach( $thumbs as $thumb ) {

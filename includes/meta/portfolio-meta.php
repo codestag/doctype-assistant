@@ -6,43 +6,43 @@ function stag_metabox_portfolio(){
 
   $meta_box = array(
     'id' => 'stag-metabox-portfolio',
-    'title' => __('Portfolio Settings', 'stag'),
-    'description' => __('Here you can customize your project details.', 'stag'),
+    'title' => __('Portfolio Settings', 'doctype-assistant'),
+    'description' => __('Here you can customize your project details.', 'doctype-assistant'),
     'page' => 'portfolio',
     'context' => 'normal',
     'priority' => 'high',
     'fields' => array(
         array(
-            'name' => __('Project Images', 'stag'),
-            'desc' => __('Choose project images, ideal size 1170px x unlimited.', 'stag'),
+            'name' => __('Project Images', 'doctype-assistant'),
+            'desc' => __('Choose project images, ideal size 1170px x unlimited.', 'doctype-assistant'),
             'id' => '_stag_portfolio_images',
             'type' => 'images',
-            'std' => __('Upload Images', 'stag')
+            'std' => __('Upload Images', 'doctype-assistant')
         ),
         array(
-            'name' => __('Subtitle', 'stag'),
-            'desc' => __('Enter the subtitle for this portfolio item', 'stag'),
+            'name' => __('Subtitle', 'doctype-assistant'),
+            'desc' => __('Enter the subtitle for this portfolio item', 'doctype-assistant'),
             'id' => '_stag_portfolio_subtitle',
             'type' => 'text',
             'std' => ''
         ),
         array(
-            'name' => __('Client Name', 'stag'),
-            'desc' => __('Enter the client name of the project', 'stag'),
+            'name' => __('Client Name', 'doctype-assistant'),
+            'desc' => __('Enter the client name of the project', 'doctype-assistant'),
             'id' => '_stag_portfolio_client',
             'type' => 'text',
             'std' => ''
         ),
         array(
-            'name' => __('Project Date', 'stag'),
-            'desc' => __('Choose the project date in MM/DD/YYYY format. E.g. 12/23/2012', 'stag'),
+            'name' => __('Project Date', 'doctype-assistant'),
+            'desc' => __('Choose the project date in MM/DD/YYYY format. E.g. 12/23/2012', 'doctype-assistant'),
             'id' => '_stag_portfolio_date',
             'type' => 'text',
             'std' => '',
         ),
         array(
-            'name' => __('Project URL', 'stag'),
-            'desc' => __('Enter the project URL', 'stag'),
+            'name' => __('Project URL', 'doctype-assistant'),
+            'desc' => __('Enter the project URL', 'doctype-assistant'),
             'id' => '_stag_portfolio_url',
             'type' => 'text',
             'std' => ''

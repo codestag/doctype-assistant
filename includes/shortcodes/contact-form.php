@@ -8,10 +8,10 @@
  * @subpackage Doctype
  */
 function doctype_contact_form_sc() {
-$nameError         = __( 'Please enter your name.', 'stag' );
-$emailError        = __( 'Please enter your email address.', 'stag' );
-$emailInvalidError = __( 'You entered an invalid email address.', 'stag' );
-$commentError      = __( 'Please enter a message.', 'stag' );
+$nameError         = __( 'Please enter your name.', 'doctype-assistant' );
+$emailError        = __( 'Please enter your email address.', 'doctype-assistant' );
+$emailInvalidError = __( 'You entered an invalid email address.', 'doctype-assistant' );
+$commentError      = __( 'Please enter a message.', 'doctype-assistant' );
 
 $errorMessages     = array();
 
@@ -69,17 +69,17 @@ if ( isset( $_POST['submitted'] ) ) {
 	<?php if( isset( $emailSent ) && true === $emailSent ) : ?>
 
 		<div class="stag-alert stag-alert--green">
-			<p><?php _e('Thanks, your email was sent successfully.', 'stag') ?></p>
+			<p><?php _e('Thanks, your email was sent successfully.', 'doctype-assistant') ?></p>
 		</div>
 
 	<?php else: ?>
 
 		<form action="<?php the_permalink(); ?>" id="contactForm" class="contact-form" method="post">
-			<h2><?php _e('Send a Direct Message', 'stag'); ?></h2>
+			<h2><?php _e('Send a Direct Message', 'doctype-assistant'); ?></h2>
 
 			<div class="grids">
 				<p class="grid-6">
-					<label for="contactName"><?php _e('Name', 'stag') ?></label>
+					<label for="contactName"><?php _e('Name', 'doctype-assistant') ?></label>
 					<input type="text" name="contactName" id="contactName" value="<?php if(isset($_POST['contactName'])) echo $_POST['contactName'];?>">
 					<?php if(isset($errorMessages['nameError'])) { ?>
 						<span class="error"><?php echo $errorMessages['nameError']; ?></span>
@@ -87,7 +87,7 @@ if ( isset( $_POST['submitted'] ) ) {
 				</p>
 
 				<p class="grid-6">
-					<label for="email"><?php _e('Email', 'stag') ?></label>
+					<label for="email"><?php _e('Email', 'doctype-assistant') ?></label>
 					<input type="text" name="email" id="email" value="<?php if(isset($_POST['email'])) echo $_POST['email'];?>">
 					<?php if(isset($errorMessages['emailError'])) { ?>
 						<span class="error"><?php echo $errorMessages['emailError']; ?></span>
@@ -99,7 +99,7 @@ if ( isset( $_POST['submitted'] ) ) {
 			</div>
 
 			<p class="commentsText">
-				<label for="commentsText"><?php _e('Comment', 'stag') ?></label>
+				<label for="commentsText"><?php _e('Comment', 'doctype-assistant') ?></label>
 				<textarea rows="8" name="comments" id="commentsText" ><?php if(isset($_POST['comments'])) { if(function_exists('stripslashes')) { echo stripslashes($_POST['comments']); } else { echo $_POST['comments']; } } ?></textarea>
 				<?php if(isset($errorMessages['commentError'])) { ?>
 					<span class="error"><?php echo $errorMessages['commentError']; ?></span>
@@ -107,7 +107,7 @@ if ( isset( $_POST['submitted'] ) ) {
 			</p>
 
 			<p class="buttons">
-				<input type="submit" id="submitted" class="contact-form-button" name="submitted" value="<?php _e('Send Message', 'stag') ?>">
+				<input type="submit" id="submitted" class="contact-form-button" name="submitted" value="<?php _e('Send Message', 'doctype-assistant') ?>">
 			</p>
 		</form>
 
