@@ -21,18 +21,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! class_exists( 'Doctype_Assistant' ) ) :
 	/**
+	 * Doctype assistant class.
 	 *
 	 * @since 1.0
 	 */
 	class Doctype_Assistant {
 
 		/**
+		 * Base instance var.
 		 *
+		 * @var
 		 * @since 1.0
 		 */
 		private static $instance;
 
 		/**
+		 * Register method for creating an instance.
 		 *
 		 * @since 1.0
 		 */
@@ -46,6 +50,7 @@ if ( ! class_exists( 'Doctype_Assistant' ) ) :
 		}
 
 		/**
+		 * Add hooks and filters at plugin initialization.
 		 *
 		 * @since 1.0
 		 */
@@ -54,6 +59,7 @@ if ( ! class_exists( 'Doctype_Assistant' ) ) :
 		}
 
 		/**
+		 * Define constants.
 		 *
 		 * @since 1.0
 		 */
@@ -65,6 +71,7 @@ if ( ! class_exists( 'Doctype_Assistant' ) ) :
 		}
 
 		/**
+		 * Define a constant.
 		 *
 		 * @param string $name
 		 * @param string $value
@@ -77,6 +84,7 @@ if ( ! class_exists( 'Doctype_Assistant' ) ) :
 		}
 
 		/**
+		 * Include files for the plugin.
 		 *
 		 * @since 1.0
 		 */
@@ -100,6 +108,11 @@ if ( ! class_exists( 'Doctype_Assistant' ) ) :
 
 		}
 
+		/**
+		 * Enqueue admin scripts & styles
+		 *
+		 * @since 1.0
+		 */
 		public function enqueue_admin_scripts( $hook ) {
 			if ( 'post.php' === $hook || 'post-new.php' === $hook ) {
 				wp_register_style( 'stag-admin-metabox', DA_PLUGIN_URL . 'assets/css/stag-admin-metabox.css', array( 'wp-color-picker' ), DA_VERSION );
@@ -118,6 +131,7 @@ endif;
 
 
 /**
+ * Plugin instance.
  *
  * @since 1.0
  */
@@ -126,6 +140,7 @@ function doctype_assistant() {
 }
 
 /**
+ * Plugin activation notice.
  *
  * @since 1.0
  */
@@ -136,18 +151,14 @@ function doctype_assistant_activation_notice() {
 }
 
 /**
- *
+ * Plugin activation check.
  *
  * @since 1.0
  */
 function doctype_assistant_activation_check() {
 	$theme = wp_get_theme(); // gets the current theme.
 	if ( 'Doctype' === $theme->name || 'Doctype' === $theme->parent_theme ) {
-		if ( function_exists( 'is_multisite' ) && is_multisite() ) {
-			add_action( 'after_setup_theme', 'doctype_assistant' );
-		} else {
-			doctype_assistant();
-		}
+		add_action( 'after_setup_theme', 'doctype_assistant' );
 	} else {
 		if ( ! function_exists( 'deactivate_plugins' ) ) {
 			require_once ABSPATH . 'wp-admin/includes/plugin.php';
