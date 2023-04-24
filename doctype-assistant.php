@@ -5,7 +5,7 @@
  * Description: A plugin to assist Doctype theme in adding widgets.
  * Author: Codestag
  * Author URI: https://codestag.com
- * Version: 1.0
+ * Version: 1.0.1
  * Text Domain: doctype-assistant
  * License: GPL2+
  * License URI: https://www.gnu.org/licenses/gpl-2.0.txt
@@ -64,7 +64,7 @@ if ( ! class_exists( 'Doctype_Assistant' ) ) :
 		 * @since 1.0
 		 */
 		public function define_constants() {
-			$this->define( 'DA_VERSION', '1.0' );
+			$this->define( 'DA_VERSION', '1.0.1' );
 			$this->define( 'DA_DEBUG', true );
 			$this->define( 'DA_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 			$this->define( 'DA_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
