@@ -4,7 +4,7 @@
 * Fix undefined key at Static Content widget
 * Other minor code improvements
 * Compatibility with PHP 8
-* Compatibility with WordPress 6.2.xs
+* Compatibility with WordPress 6.2.x
 
 ## 1.0.0 - June 20, 2020
 * Initial release
