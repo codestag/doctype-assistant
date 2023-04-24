@@ -2,7 +2,7 @@
 add_action( 'widgets_init', array( 'stag_widget_recent_projects', 'register' ) );
 
 class stag_widget_recent_projects extends WP_Widget {
-	function __construct() {
+	public function __construct() {
 		$widget_ops  = array(
 			'classname'   => 'section-recent-projects',
 			'description' => __( 'Displays recent portfolio items.', 'doctype-assistant' ),
@@ -15,7 +15,7 @@ class stag_widget_recent_projects extends WP_Widget {
 		parent::__construct( 'stag_widget_recent_projects', __( 'Section: Recent Projects', 'doctype-assistant' ), $widget_ops, $control_ops );
 	}
 
-	function widget( $args, $instance ) {
+	public function widget( $args, $instance ) {
 		extract( $args );
 
 		// VARS FROM WIDGET SETTINGS
@@ -67,7 +67,7 @@ class stag_widget_recent_projects extends WP_Widget {
 
 		<?php
 
-		if ( $button_link != '' ) {
+		if ( $button_link !== '' ) {
 			?>
 		  <a href="<?php echo esc_url( $button_link ); ?>" class="button portfolio-button"><?php echo esc_attr( $button_text ); ?></a>
 			<?php
@@ -77,7 +77,7 @@ class stag_widget_recent_projects extends WP_Widget {
 
 	}
 
-	function update( $new_instance, $old_instance ) {
+	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 
 		// STRIP TAGS TO REMOVE HTML
@@ -90,7 +90,7 @@ class stag_widget_recent_projects extends WP_Widget {
 		return $instance;
 	}
 
-	function form( $instance ) {
+	public function form( $instance ) {
 		$defaults = array(
 			/* Deafult options goes here */
 			'title'       => 'Recent Projects',

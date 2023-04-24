@@ -2,7 +2,7 @@
 add_action( 'widgets_init', array( 'stag_widget_cta', 'register' ) );
 
 class stag_widget_cta extends WP_Widget {
-	function __construct() {
+	public function __construct() {
 		$widget_ops  = array(
 			'classname'   => 'section-call-to-action',
 			'description' => __( 'Displays a call to action.', 'doctype-assistant' ),
@@ -15,7 +15,7 @@ class stag_widget_cta extends WP_Widget {
 		parent::__construct( 'stag_widget_cta', __( 'Section: Call To Action', 'doctype-assistant' ), $widget_ops, $control_ops );
 	}
 
-	function widget( $args, $instance ) {
+	public function widget( $args, $instance ) {
 		extract( $args );
 
 		// VARS FROM WIDGET SETTINGS
@@ -31,30 +31,28 @@ class stag_widget_cta extends WP_Widget {
 				<h2><?php echo $title; ?></h2>
 			</div>
 			<div class="grid-5">
-				<?php if ( $text != '' ) : ?>
+				<?php if ( $text !== '' ) : ?>
 				<a href="<?php echo esc_url( $link ); ?>" class="button"><?php echo esc_attr( $text ); ?></a>
 				<?php endif; ?>
 			</div>
 		</div>
 
 		<?php
-
 		echo $after_widget;
-
 	}
 
-	function update( $new_instance, $old_instance ) {
+	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 
-		// STRIP TAGS TO REMOVE HTML
+		// Strip tags to remove HTML.
 		$instance['title'] = $new_instance['title'];
-		$instance['link']  = strip_tags( $new_instance['link'] );
-		$instance['text']  = strip_tags( $new_instance['text'] );
+		$instance['link']  = wp_strip_all_tags( $new_instance['link'] );
+		$instance['text']  = wp_strip_all_tags( $new_instance['text'] );
 
 		return $instance;
 	}
 
-	function form( $instance ) {
+	public function form( $instance ) {
 		$defaults = array(
 			/* Deafult options goes here */
 			'title' => '',

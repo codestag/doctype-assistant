@@ -2,7 +2,7 @@
 add_action( 'widgets_init', array( 'stag_widget_contact', 'register' ) );
 
 class stag_widget_contact extends WP_Widget {
-	function __construct() {
+	public function __construct() {
 		$widget_ops  = array(
 			'classname'   => 'section-contact',
 			'description' => __( 'Displays contact information.', 'doctype-assistant' ),
@@ -15,7 +15,7 @@ class stag_widget_contact extends WP_Widget {
 		parent::__construct( 'stag_widget_contact', __( 'Section: Contact Info', 'doctype-assistant' ), $widget_ops, $control_ops );
 	}
 
-	function widget( $args, $instance ) {
+	public function widget( $args, $instance ) {
 		extract( $args );
 
 		// VARS FROM WIDGET SETTINGS
@@ -38,34 +38,30 @@ class stag_widget_contact extends WP_Widget {
 		</header><!-- .entry-header -->
 
 		<?php
-		if ( $lat != '' && $long != '' ) {
-			echo do_shortcode( "[stag_map lat='$lat' long='$long' height=400px]" );
+		if ( $lat !== '' && $long !== '' ) {
+			echo do_shortcode( "[stag_map lat='$lat' long='$long' height=400px]" ); // phpcs:ignore
 		}
 			?>
 
 		<span class="inner-section-divider"><i class="fa fa-envelope-o"></i></span>
 
 		<div class="entry-content">
-			<?php echo wpautop( $description ); ?>
+			<?php echo wpautop( $description ); // phpcs:ignore ?>
 		</div>
 
 
-		<?php endif; ?>
-
-
-
 		<?php
-
+		endif;
 		echo $after_widget;
 
 	}
 
-	function update( $new_instance, $old_instance ) {
+	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 
-		// STRIP TAGS TO REMOVE HTML
-		$instance['title']       = strip_tags( $new_instance['title'] );
-		$instance['subtitle']    = strip_tags( $new_instance['subtitle'] );
+		// Strip tags to remove HTML.
+		$instance['title']       = wp_strip_all_tags( $new_instance['title'] );
+		$instance['subtitle']    = wp_strip_all_tags( $new_instance['subtitle'] );
 		$instance['description'] = stripslashes( wp_filter_post_kses( addslashes( $new_instance['description'] ) ) );
 		$instance['lat']         = $new_instance['lat'];
 		$instance['long']        = $new_instance['long'];
@@ -73,7 +69,7 @@ class stag_widget_contact extends WP_Widget {
 		return $instance;
 	}
 
-	function form( $instance ) {
+	public function form( $instance ) {
 		$defaults = array(
 			/* Deafult options goes here */
 			'title'       => __( 'Get in Touch', 'doctype-assistant' ),

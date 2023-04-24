@@ -2,7 +2,7 @@
 add_action( 'widgets_init', array('stag_widget_hero', 'register') );
 
 class stag_widget_hero extends WP_Widget {
-	function __construct() {
+	public function __construct() {
 		$widget_ops  = array(
 			'classname'   => 'section-hero',
 			'description' => __( 'Displays content like a boss.', 'doctype-assistant' ),
@@ -15,10 +15,10 @@ class stag_widget_hero extends WP_Widget {
 		parent::__construct( 'stag_widget_hero', __( 'Section: Hero', 'doctype-assistant' ), $widget_ops, $control_ops );
 	}
 
-	function widget( $args, $instance ) {
+	public function widget( $args, $instance ) {
 		extract( $args );
 
-		// VARS FROM WIDGET SETTINGS
+		// VARS FROM WIDGET SETTINGS.
 		$title            = apply_filters( 'widget_title', $instance['title'] );
 		$bg_image         = $instance['bg_image'];
 		$page             = $instance['page'];
@@ -29,7 +29,7 @@ class stag_widget_hero extends WP_Widget {
 
 		?>
 
-		<?php if ( $hero_button_text != '' ) : ?>
+		<?php if ( $hero_button_text !== '' ) : ?>
 		<a href="<?php echo esc_url( $hero_button_link ); ?>" class="button"><?php echo $hero_button_text; ?></a>
 		<?php endif; ?>
 
@@ -47,8 +47,6 @@ class stag_widget_hero extends WP_Widget {
 
 				<div class="hero-content entry-content">
 					<?php
-						$the_page = get_page( $page );
-
 						$query_args = array(
 							'page_id' => $page,
 						);
@@ -84,20 +82,20 @@ class stag_widget_hero extends WP_Widget {
 
 	}
 
-	function update( $new_instance, $old_instance ) {
+	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 
-		// STRIP TAGS TO REMOVE HTML
+		// Strip tags to remove HTML.
 		$instance['title']            = $new_instance['title'];
 		$instance['bg_image']         = esc_url( $new_instance['bg_image'] );
 		$instance['page']             = $new_instance['page'];
-		$instance['hero_button_text'] = strip_tags( $new_instance['hero_button_text'] );
+		$instance['hero_button_text'] = wp_strip_all_tags( $new_instance['hero_button_text'] );
 		$instance['hero_button_link'] = esc_url( $new_instance['hero_button_link'] );
 
 		return $instance;
 	}
 
-	function form( $instance ) {
+	public function form( $instance ) {
 		$defaults = array(
 			/* Deafult options goes here */
 			'title'            => 'Static Content',
@@ -134,7 +132,7 @@ class stag_widget_hero extends WP_Widget {
 		?>
 			<option value="<?php echo $paged->ID; ?>"
 										<?php
-										if ( $instance['page'] == $paged->ID ) {
+										if ( $instance['page'] === $paged->ID ) {
 											echo 'selected';}
 ?>
 ><?php echo $paged->post_title; ?></option>

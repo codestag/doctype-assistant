@@ -2,7 +2,7 @@
 add_action( 'widgets_init', array( 'stag_widget_intro', 'register' ) );
 
 class stag_widget_intro extends WP_Widget {
-	function __construct() {
+	public function __construct() {
 		$widget_ops  = array(
 			'classname'   => 'section-intro',
 			'description' => __( 'Displays a basic intro.', 'doctype-assistant' ),
@@ -15,7 +15,7 @@ class stag_widget_intro extends WP_Widget {
 		parent::__construct( 'stag_widget_intro', __( 'Section: Intro', 'doctype-assistant' ), $widget_ops, $control_ops );
 	}
 
-	function widget( $args, $instance ) {
+	public function widget( $args, $instance ) {
 		extract( $args );
 
 		// VARS FROM WIDGET SETTINGS
@@ -32,7 +32,7 @@ class stag_widget_intro extends WP_Widget {
 
 	}
 
-	function update( $new_instance, $old_instance ) {
+	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 
 		// STRIP TAGS TO REMOVE HTML
@@ -41,7 +41,7 @@ class stag_widget_intro extends WP_Widget {
 		return $instance;
 	}
 
-	function form( $instance ) {
+	public function form( $instance ) {
 		$defaults = array(
 			/* Deafult options goes here */
 			'content' => __( 'I am a <span>dedicated</span> designer who enjoys <span>awesome</span> projects.', 'doctype-assistant' ),

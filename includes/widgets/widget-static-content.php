@@ -2,7 +2,7 @@
 add_action( 'widgets_init', array( 'stag_widget_static_content', 'register' ) );
 
 class stag_widget_static_content extends WP_Widget {
-	function __construct() {
+	public function __construct() {
 		$widget_ops  = array(
 			'classname'   => 'section-static-content',
 			'description' => __( 'Displays content from a specific page.', 'doctype-assistant' ),
@@ -15,7 +15,7 @@ class stag_widget_static_content extends WP_Widget {
 		parent::__construct( 'stag_widget_static_content', __( 'Section: Static Content', 'doctype-assistant' ), $widget_ops, $control_ops );
 	}
 
-	function widget( $args, $instance ) {
+	public function widget( $args, $instance ) {
 		extract( $args );
 
 		// VARS FROM WIDGET SETTINGS
@@ -28,8 +28,6 @@ class stag_widget_static_content extends WP_Widget {
 		$link_color = $instance['link_color'];
 
 		echo $before_widget;
-
-		$the_page = get_page( $page );
 
 		$query_args = array(
 			'page_id' => $page,
@@ -80,22 +78,22 @@ class stag_widget_static_content extends WP_Widget {
 
 	}
 
-	function update( $new_instance, $old_instance ) {
+	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 
 		// STRIP TAGS TO REMOVE HTML
-		$instance['title']      = strip_tags( $new_instance['title'] );
-		$instance['page']       = strip_tags( $new_instance['page'] );
-		$instance['bg_color']   = strip_tags( $new_instance['bg_color'] );
+		$instance['title']      = wp_strip_all_tags( $new_instance['title'] );
+		$instance['page']       = wp_strip_all_tags( $new_instance['page'] );
+		$instance['bg_color']   = wp_strip_all_tags( $new_instance['bg_color'] );
 		$instance['bg_image']   = esc_url( $new_instance['bg_image'] );
-		$instance['bg_opacity'] = strip_tags( $new_instance['bg_opacity'] );
-		$instance['text_color'] = strip_tags( $new_instance['text_color'] );
-		$instance['link_color'] = strip_tags( $new_instance['link_color'] );
+		$instance['bg_opacity'] = wp_strip_all_tags( $new_instance['bg_opacity'] );
+		$instance['text_color'] = wp_strip_all_tags( $new_instance['text_color'] );
+		$instance['link_color'] = wp_strip_all_tags( $new_instance['link_color'] );
 
 		return $instance;
 	}
 
-	function form( $instance ) {
+	public function form( $instance ) {
 		$defaults = array(
 			/* Deafult options goes here */
 			'title'      => 'Static Content',
