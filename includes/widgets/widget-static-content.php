@@ -101,6 +101,7 @@ class stag_widget_static_content extends WP_Widget {
 			'title'      => 'Static Content',
 			'bg_color'   => '#363f48',
 			'bg_opacity' => 50,
+			'bg_image'   => '',
 			'text_color' => '#ffffff',
 			'link_color' => doctype_get_thememod_value( 'accent-color' ),
 			'page'       => 0,
